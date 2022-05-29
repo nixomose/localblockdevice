@@ -1,0 +1,22 @@
+#!/bin/bash
+
+echo "-- localblockdevice"
+cd ../localblockdevice  && git push origin master && git push github master && git push --tags # && go get -u ./...  && go mod tidy
+
+echo "-- blockdevicelib"
+cd ../blockdevicelib    && git push origin master && git push github master && git push --tags # && go get -u ./...  && go mod tidy
+
+#cd ../remoteblockdevice && git push origin master && git push github master && git push --tags#  && go get -u ./...  && go mod tidy
+
+echo "-- nixomosegotools"
+cd ../nixomosegotools   && git push origin master && git push github master && git push --tags # && go get -u ./...  && go mod tidy
+
+echo "-- stree_v"
+cd ../stree_v           && git push origin master && git push github master && git push --tags # && go get -u ./...  && go mod tidy
+
+echo "-- zosbd2goclient"
+cd ../zosbd2goclient    && git push origin master && git push github master && git push --tags # && go get -u ./...  && go mod tidy
+
+echo "-- compressblockdevice"
+cd ../compressblockdevice    && git push origin master && git push github master && git push --tags # && go get -u ./...  && go mod tidy
+

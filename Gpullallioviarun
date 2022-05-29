@@ -1,0 +1,8 @@
+#!/bin/bash
+
+cd ../localblockdevice && git pull io master
+cd ../nixomosegotools && git pull io master
+cd ../blockdevicelib && git pull io master
+cd ../remoteblockdevice && git pull io master
+cd ../stree_v && git pull io master
+cd ../zosbd2goclient && git pull io master

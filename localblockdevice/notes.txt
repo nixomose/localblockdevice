@@ -1,0 +1,320 @@
+
+
+
+
+
+
+
+
+
+
+futex(0x825258, FUTEX_WAKE_PRIVATE, 1)  = 1
+futex(0x824750, FUTEX_WAIT_PRIVATE, 0, NULL
+panic: runtime error: slice bounds out of range [:430080] with capacity 393216
+
+goroutine 1 [running]:
+github.com/nixomose/zosbd2goclient/zosbd2_stree_v_storage_mechanism.(*Zosbd2_stree_v_storage_mechanism).Discard_block(0xc0000a2408, 0x1097000, 0x6f69000)
+        /home/nixo/git/go/nixomose/zosbd2goclient/zosbd2_stree_v_storage_mechanism/zosbd2_store.go:390 +0xa26
+github.com/nixomose/zosbd2goclient/zosbd2cmdlib.(*Kmod).respond_to_discard_request(0xc000093590, 0xc000094bc0, 0x1f, 0xc000212000, {0xc000218000, 0x101038, 0x101038}, {0x6b5af0, 0xc0000a2408})  
+        /home/nixo/git/go/nixomose/zosbd2goclient/zosbd2cmdlib/kmod.go:919 +0x1e8
+github.com/nixomose/zosbd2goclient/zosbd2cmdlib.(*Block_device_handler).Run(0xc0000f17d0)
+        /home/nixo/git/go/nixomose/zosbd2goclient/zosbd2cmdlib/block_device_handler.go:175 +0x9d8
+github.com/nixomose/blockdevicelib/blockdevicelib.(*Lbd_lib).run_block_device(0xc0000b8210, 0xc0000c8980, 0x93, 0x1, 0x1)
+        /home/nixo/git/go/nixomose/blockdevicelib/blockdevicelib/lbdlib.go:798 +0x4b5
+github.com/nixomose/blockdevicelib/blockdevicelib.(*Lbd_lib).catalog_start_device(0xc0000b8210, 0x7fff255d2793, {0x7fff255d2793, 0x1}, 0x90, 0xc000185c48, 0x0, 0x0, 0x1)
+        /home/nixo/git/go/nixomose/blockdevicelib/blockdevicelib/catalog.go:615 +0x36e
+github.com/nixomose/blockdevicelib/blockdevicelib.(*Lbd_lib).add_start_device_from_catalog.func1(0xc00009f900, {0xc00009b560, 0x3, 0x3})
+        /home/nixo/git/go/nixomose/blockdevicelib/blockdevicelib/lbdcmdlineargs.go:384 +0x225
+github.com/spf13/cobra.(*Command).execute(0xc00009f900, {0xc00009b530, 0x3, 0x3})
+        /root/go/pkg/mod/github.com/spf13/cobra@v1.4.0/command.go:860 +0x5f8
+github.com/spf13/cobra.(*Command).ExecuteC(0xc00009e280)
+        /root/go/pkg/mod/github.com/spf13/cobra@v1.4.0/command.go:974 +0x3bc
+github.com/spf13/cobra.(*Command).Execute(...)
+        /root/go/pkg/mod/github.com/spf13/cobra@v1.4.0/command.go:902
+github.com/nixomose/blockdevicelib/blockdevicelib.(*Lbd_lib).Run(0xc0000b8210, 0x6610f4, 0x2f)
+        /home/nixo/git/go/nixomose/blockdevicelib/blockdevicelib/lbdlib.go:271 +0x65
+main.main()
+        /home/nixo/git/go/nixomose/compressblockdevice/compressblockdevice/cbd.go:57 +0x246
+) = ?
+
+
+
+
+
+
+
+
+
+
+4/3/2022
+I know I wrote this down somewhere else, but make go routines out of 
+the loop of read/write requests. and discard
+
+4/3/2022
+well guess what I just noticed.
+we have a mount option for the block device we start
+assuming there's one partition and one filesystem per block device
+but we can actually have a device have many partitions.
+we should probably do something about that.
+
+
+3/20/2022
+
+add a catalog set mount true/false and catalog set mountpoint
+
+3/19/2022
+must copy 64 bit ranges and sizes from discard to write_block()
+
+3/19/2022
+
+redirect output to syslog for background dragon processess
+
+https://stackoverflow.com/questions/51709744/golang-write-stdout-and-stderr-to-log15-file
+
+https://stackoverflow.com/questions/25190971/golang-copy-exec-output-to-log
+
+https://riptutorial.com/go/example/13468/logging-to-syslog
+
+
+3/18/2022
+DONE make all json output for things that aren't logs pretty printed, like device status and file sytatus
+
+
+3/18/2022
+add mounted status to device-status output
+
+
+3/2022
+
+
+to fix modules:
+
+git config --global --add url."git@github.com:".insteadOf "https://github.com/"
+
+or this
+
+go env -w GOPRIVATE=github.com/nixomose/*
+
+export GOPRIVATE=github.com/nixomose/nixomosegotools,github.com/nixomose/zosbd2goclient,github.com/nixomose/stree_v
+export GOPRIVATE=github.com/nixomose/nixomosegotools,github.com/nixomose/zosbd2goclient,github.com/nixomose/stree_v,github.com/nixomose/localblockdevice
+
+
+git remote set-url github https://nixomose:@github.com/nixomose/localblockdevice.git
+git remote set-url github https://nixomose:@github.com/nixomose/nixomosegotools.git
+git remote set-url github https://nixomose:@github.com/nixomose/zosbd2goclient.git
+git remote set-url github https://nixomose:@github.com/nixomose/stree_v.git
+git remote set-url github https://nixomose:@github.com/nixomose/blockdevicelib.git
+git remote set-url github https://nixomose:@github.com/nixomose/compressblockdevice.git
+
+so the git remote seturl thing will get you git on the command line working.
+
+to get go get and go mod tidy working you have to add your public key to github
+so you can access the private repositories
+and add this to ~/.gitconfig
+
+[url "git@github.com:"]
+        insteadOf = https://github.com/
+
+and that will make it use ssh, and thus the ssh keys will work
+
+to add a dependency ("required") to a go.mod
+go get github.com/nixomose/nixomosegotools
+it will download it and add it as a require to the go.mod and go.sum
+
+
+
+3/6/2022
+to get vscode to run lbd as root in the debugger
+the last magic thing you have to do outside of all the settings
+in various settingss files is this:
+
+from here:
+https://github.com/golang/vscode-go/issues/1834
+
+in /etc/sudoers, add go to the end of the secure path....
+
+Defaults        secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/local/go/bin"
+
+
+if you get this:
+2022-05-14T08:38:57-04:00 error layer=debugger error loading binary "/lib/x86_64-linux-gnu/libc.so.6": could not parse .eh_frame section: pointer encoding not supported 0x9b at 0x5640
+it may still work.
+
+
+create a /etc/sudoers.d/dlv...
+
+root@kmod3:/etc/sudoers.d# cat dlv 
+
+nixo ALL=(root)NOPASSWD:/home/nixo/go/bin/dlv
+nixo ALL=(root)NOPASSWD:/home/nixo/go/bin/dlv-dap
+nixo ALL=(root)NOPASSWD:/usr/local/go/bin/dlv
+nixo ALL=(root)NOPASSWD:/usr/local/go/bin/dlv-dap
+
+obviously some of this is crap, but whatever, it works.
+
+so basically it has to be the legacy non-dap debugger.
+
+you have to run the script dlv-sudo.sh 
+in zosbd2cmd settings...
+{
+	"go.alternateTools": {
+		"dlv": "/home/nixo/git/go/nixomose/zosbd2cmd/.vscode/dlv-sudo.sh",
+		"dlv-dap": "/home/nixo/git/go/nixomose/zosbd2cmd/.vscode/dlv-sudo.sh"
+	},
+	"go.delveConfig": {
+		"debugAdapter": "legacy"
+	}
+}
+
+    "go.delveConfig": {
+        "maxVariableRecurse": "2", // add this to display maps in the debugger
+        "debugAdapter": "legacy"
+    },
+
+
+
+
+in global settings (you get there by settings->preferences-> search for "debug"
+under the Go extension, there will be go: delve config and an option to "edit in settings.json"
+and that's how you get there:
+add this: again probably overkill ...
+
+    "go.delveConfig": {
+        
+        "debugAdapter": "legacy"
+    },
+
+
+and the bit in the launch.config that makes it go for this launch configuration...
+
+   "program": "${file}",
+      "env": {
+        "DEBUG_AS_ROOT": "true"
+      },
+      "debugAdapter": "legacy",
+      "args": [
+        "completion",
+        "bash"
+      ]
+    },
+   
+
+
+also go ctrl-shift-p  go install tools, just select everything again  and reinstall everything for good mesaure
+
+
+
+
+
+
+3/5/2022 
+make tab completion functions that auto fill the device name for -d
+
+2/25/2022
+
+if the block device is set to mount and it's already unmounted when you shut down
+the unmount will fail making it impossible to shut down
+handle this case cleanly allow it to shutdown if the filesystem is already unmounted
+
+2/24/2022
+consider making the block size, the user specified block size minus the per-node header size
+so that OUR writes to disk align on 4k, but that just pushes the problem to the zos layer which will
+now have to do the read-update-write and it seems to me this disk will be faster than me at that 
+so perhaps it's better to not do this, and align to the user's most likely use case so our 
+read-update-write (the slower one) will happen less frequently
+
+
+2/21/2022
+DONE AND FIXED test catalog add setting alignment see if it ends up in the device struct
+in catalog.go line 172
+
+2/12/2022
+
+make compressfs out of stree of each file.
+
+
+2/12/2022 
+maybe call a catalog entry a v-card or vcard
+
+
+2/11/2022
+add a catalog version
+
+2/11/2022
+lvm like layer of large-block-section lookups to find the host
+that has the stree for that block of data.
+this is how we make a quick map to find what stree to go to to get a given block.
+for example
+stree blocks 0 - 1024   -> zone 1 (let's not use the term zone but this will do for now)
+stree blocks 1024 - 1048576 -> zone 2
+stree blocks 1048576 - 4194304 -> zone 3
+at any point we can slice and dice this map into smaller or larger
+pieces. it's a tiny map that will always be in memory
+as long as you're willing to move the blocks you can split a zone into smaller zones,    etc
+just need a minimum zone size, and you really don't even need that.
+
+
+2/6/2022
+add a read and write retry thing so failures can be recovered from
+
+
+2/6/2022
+definitely need to make a read cache, especially for directio
+defaults for stree data block size should maybe be 4meg like lvm does
+with a 4k alignment
+
+
+1/30/2022
+short term add stats on read time, update time, seek time, write time.
+
+1/30/2022
+profile profile profile
+
+
+1/30/2022
+write a command line tool, really for stree that shows stats on the tree
+max depth, how many blocks, how many extra nodes are used on average, high and low
+
+
+1/25/2022
+we need a way to signal a userspace application to try and cleanly unmount the filesystem
+in the block device before getting the signal to exit.
+we need some other kernel-notify-userspace command
+like instead of exit, there should be an exit request.
+that will tell userspace to unmount the block device, sync
+and then call an ioctl to tell itself to exit.
+
+1/23/2022
+
+block device catalog in toml rhat you can load all at once or edit and display
+make flags for ramdisk test for stree and zosbd2
+automount the filesystem on setup and unmount on drop
+use the new kmod signal stuff to tell userspace to do that.
+
+catalog entry:
+
+device_name:   also the catalog key
+size_in_bytes: block device size in bytes, must be multiple of 4k
+local_storage_file:  local filename for block device storage, can be file or block device.
+direct_io:  backing store should use O_DIRECT
+mount: true/false  // should we mount the filesystem after creating the block device
+
+of course the problem with the shutdown is that we have to unmount the filesystem first
+before we run the command to tell the kmod to destroy the block device
+
+
+1/22/2022
+add a clean shutdown flag to stree_v header.
+
+add destroy block device and destroy all block devices
+
+do the detach from terminal for create-device
+
+make a bash completion script for localblockdevice
+
+
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+sudo ./localblockdevice -d zzzdevice -c ./localblockdevice.cf  -s 10485760 -t /dev/sdb1 create-device

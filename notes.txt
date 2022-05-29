@@ -1,0 +1,22 @@
+
+cbd device-status
+
+cbd catalog add catalog add -d zosdevicecomp -s 1073741824 -p 5 -t /home/nixo/testzosdevicecompress --sync 
+
+cbd catalog stop   -d zosdevicecomp
+
+cbd destroy-device -d zosdevicecomp
+
+cbd catalog delete -d zosdevicecomp -i -a -s 
+
+dd if=/dev/urandom of=/dev/zosdevicecomp bs=1 count=8
+dd if=/dev/urandom of=/dev/zosdevicecomp bs=1 count=8
+sync
+
+dd if=/dev/urandom of=/dev/zosdevicecomp bs=1 count=65536
+sync
+
+
+dd if=/dev/zosdevicecomp bs=1 count=65536 | hexdump -C
+
+hexdump -C  /home/nixo/testzosdevicecompress   | less

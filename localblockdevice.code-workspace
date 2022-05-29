@@ -1,0 +1,26 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../remoteblockdevice"
+		},
+		{
+			"path": "../zosbd2goclient"
+		},
+		{
+			"path": "../nixomosegotools"
+		},
+		{
+			"path": "../stree_v"
+		},
+		{
+			"path": "../blockdevicelib"
+		},
+		{
+			"path": "../compressblockdevice"
+		}
+	],
+	"settings": {}
+}
