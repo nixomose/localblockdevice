@@ -1,51 +1,5 @@
 
 
-
-
-
-
-
-
-
-
-futex(0x825258, FUTEX_WAKE_PRIVATE, 1)  = 1
-futex(0x824750, FUTEX_WAIT_PRIVATE, 0, NULL
-panic: runtime error: slice bounds out of range [:430080] with capacity 393216
-
-goroutine 1 [running]:
-github.com/nixomose/zosbd2goclient/zosbd2_stree_v_storage_mechanism.(*Zosbd2_stree_v_storage_mechanism).Discard_block(0xc0000a2408, 0x1097000, 0x6f69000)
-        /home/nixo/git/go/nixomose/zosbd2goclient/zosbd2_stree_v_storage_mechanism/zosbd2_store.go:390 +0xa26
-github.com/nixomose/zosbd2goclient/zosbd2cmdlib.(*Kmod).respond_to_discard_request(0xc000093590, 0xc000094bc0, 0x1f, 0xc000212000, {0xc000218000, 0x101038, 0x101038}, {0x6b5af0, 0xc0000a2408})  
-        /home/nixo/git/go/nixomose/zosbd2goclient/zosbd2cmdlib/kmod.go:919 +0x1e8
-github.com/nixomose/zosbd2goclient/zosbd2cmdlib.(*Block_device_handler).Run(0xc0000f17d0)
-        /home/nixo/git/go/nixomose/zosbd2goclient/zosbd2cmdlib/block_device_handler.go:175 +0x9d8
-github.com/nixomose/blockdevicelib/blockdevicelib.(*Lbd_lib).run_block_device(0xc0000b8210, 0xc0000c8980, 0x93, 0x1, 0x1)
-        /home/nixo/git/go/nixomose/blockdevicelib/blockdevicelib/lbdlib.go:798 +0x4b5
-github.com/nixomose/blockdevicelib/blockdevicelib.(*Lbd_lib).catalog_start_device(0xc0000b8210, 0x7fff255d2793, {0x7fff255d2793, 0x1}, 0x90, 0xc000185c48, 0x0, 0x0, 0x1)
-        /home/nixo/git/go/nixomose/blockdevicelib/blockdevicelib/catalog.go:615 +0x36e
-github.com/nixomose/blockdevicelib/blockdevicelib.(*Lbd_lib).add_start_device_from_catalog.func1(0xc00009f900, {0xc00009b560, 0x3, 0x3})
-        /home/nixo/git/go/nixomose/blockdevicelib/blockdevicelib/lbdcmdlineargs.go:384 +0x225
-github.com/spf13/cobra.(*Command).execute(0xc00009f900, {0xc00009b530, 0x3, 0x3})
-        /root/go/pkg/mod/github.com/spf13/cobra@v1.4.0/command.go:860 +0x5f8
-github.com/spf13/cobra.(*Command).ExecuteC(0xc00009e280)
-        /root/go/pkg/mod/github.com/spf13/cobra@v1.4.0/command.go:974 +0x3bc
-github.com/spf13/cobra.(*Command).Execute(...)
-        /root/go/pkg/mod/github.com/spf13/cobra@v1.4.0/command.go:902
-github.com/nixomose/blockdevicelib/blockdevicelib.(*Lbd_lib).Run(0xc0000b8210, 0x6610f4, 0x2f)
-        /home/nixo/git/go/nixomose/blockdevicelib/blockdevicelib/lbdlib.go:271 +0x65
-main.main()
-        /home/nixo/git/go/nixomose/compressblockdevice/compressblockdevice/cbd.go:57 +0x246
-) = ?
-
-
-
-
-
-
-
-
-
-
 4/3/2022
 I know I wrote this down somewhere else, but make go routines out of 
 the loop of read/write requests. and discard
