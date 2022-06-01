@@ -1,20 +1,20 @@
 #!/bin/bash
 
 echo "-- nixomosegotools"
-cd ../nixomosegotools        &&  git commit -m "update go.mod"  go.mod # go.sum  
+cd ../nixomosegotools        &&  git commit -m "update go.mod"  go.mod         ; git push origin master ; git push github master      # go.sum  
 
 echo "-- zosbd2goclient"
-cd ../zosbd2goclient         &&  git commit -m "update go.mod"  go.mod go.sum 
+cd ../zosbd2goclient         &&  git commit -m "update go.mod"  go.mod go.sum  ; git push origin master ; git push github master
 
 echo "-- stree_v"
-cd ../stree_v                &&  git commit -m "update go.mod"  go.mod go.sum 
+cd ../stree_v                &&  git commit -m "update go.mod"  go.mod go.sum  ; git push origin master ; git push github master
 
 echo "-- blockdevicelib"
-cd ../blockdevicelib         &&  git commit -m "update go.mod"  go.mod go.sum 
+cd ../blockdevicelib         &&  git commit -m "update go.mod"  go.mod go.sum  ; git push origin master ; git push github master
 
 echo "-- compressblockdevice"
-cd ../compressblockdevice    &&  git commit -m "update go.mod"  go.mod go.sum 
+cd ../compressblockdevice    &&  git commit -m "update go.mod"  go.mod go.sum  ; git push origin master ; git push github master
 
 echo "-- localblockdevice"
-cd ../localblockdevice       &&  git commit -m "update go.mod"  go.mod go.sum 
+cd ../localblockdevice       &&  git commit -m "update go.mod"  go.mod go.sum  ; git push origin master ; git push github master
 
