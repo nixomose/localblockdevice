@@ -1,0 +1,22 @@
+#!/bin/bash
+
+#cd ../localblockdevice  && rm -f go.sum && go get  -u ./...  && go get  -u ./...  && go mod tidy 
+
+echo "-- nixomosegotools"
+cd ../nixomosegotools        &&  go mod tidy 
+
+echo "-- zosbd2goclient"
+cd ../zosbd2goclient         &&  go mod tidy 
+
+echo "-- stree_v"
+cd ../stree_v                &&  go mod tidy 
+
+echo "-- blockdevicelib"
+cd ../blockdevicelib         &&  go mod tidy 
+
+echo "-- compressblockdevice"
+cd ../compressblockdevice    &&  go mod tidy 
+
+echo "-- localblockdevice"
+cd ../localblockdevice       &&  go mod tidy 
+
