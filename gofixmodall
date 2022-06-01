@@ -1,22 +1,22 @@
 #!/bin/bash
 
-echo "-- localblockdevice"
-cd ../localblockdevice  && go get -u ./...  && go mod tidy
-
-echo "-- blockdevicelib"
-cd ../blockdevicelib    && go get -u ./...  && go mod tidy
-
-#cd ../remoteblockdevice &&  go get -u ./...  && go mod tidy
+#cd ../localblockdevice  && rm -f go.sum && go get  -u ./...  && go get  -u ./...  && go mod tidy 
 
 echo "-- nixomosegotools"
-cd ../nixomosegotools   && go get -u ./...  && go mod tidy
-
-echo "-- stree_v"
-cd ../stree_v           && go get -u ./...  && go mod tidy
+cd ../nixomosegotools   && rm -f go.sum &&  go get  -u ./...  && go mod tidy 
 
 echo "-- zosbd2goclient"
-cd ../zosbd2goclient    && go get -u ./...  && go mod tidy
+cd ../zosbd2goclient    && rm -f go.sum &&  go get  -u ./...  && go mod tidy 
+
+echo "-- stree_v"
+cd ../stree_v           && rm -f go.sum &&  go get  -u ./...  && go mod tidy 
+
+echo "-- blockdevicelib"
+cd ../blockdevicelib    && rm -f go.sum &&  go get  -u ./...  && go mod tidy 
 
 echo "-- compressblockdevice"
-cd ../compressblockdevice    && go get -u ./...  && go mod tidy
+cd ../compressblockdevice    && rm -f go.sum &&  go get  -u ./...  && go mod tidy 
+
+echo "-- localblockdevice"
+cd ../localblockdevice  && rm -f go.sum &&  go get  -u ./...  && go mod tidy 
 
