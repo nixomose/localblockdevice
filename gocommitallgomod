@@ -1,0 +1,20 @@
+#!/bin/bash
+
+echo "-- nixomosegotools"
+cd ../nixomosegotools        &&  git commit -m "update go.mod"  go.mod # go.sum  
+
+echo "-- zosbd2goclient"
+cd ../zosbd2goclient         &&  git commit -m "update go.mod"  go.mod go.sum 
+
+echo "-- stree_v"
+cd ../stree_v                &&  git commit -m "update go.mod"  go.mod go.sum 
+
+echo "-- blockdevicelib"
+cd ../blockdevicelib         &&  git commit -m "update go.mod"  go.mod go.sum 
+
+echo "-- compressblockdevice"
+cd ../compressblockdevice    &&  git commit -m "update go.mod"  go.mod go.sum 
+
+echo "-- localblockdevice"
+cd ../localblockdevice       &&  git commit -m "update go.mod"  go.mod go.sum 
+
