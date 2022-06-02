@@ -20,6 +20,9 @@
 		},
 		{
 			"path": "../compressblockdevice"
+		},
+		{
+			"path": "../slookup_i"
 		}
 	],
 	"settings": {}
