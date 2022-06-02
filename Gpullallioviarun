@@ -6,3 +6,4 @@ cd ../blockdevicelib && git pull io master
 cd ../remoteblockdevice && git pull io master
 cd ../stree_v && git pull io master
 cd ../zosbd2goclient && git pull io master
+cd ../slookup_i && git pull io master

@@ -18,3 +18,6 @@ cd ../compressblockdevice    &&  git commit -m "update go.mod"  go.mod go.sum  ;
 echo "-- localblockdevice"
 cd ../localblockdevice       &&  git commit -m "update go.mod"  go.mod go.sum  ; git push origin master ; git push github master
 
+echo "-- slookup_i"
+cd ../slookup_i              &&  git commit -m "update go.mod"  go.mod go.sum  ; git push origin master ; git push github master
+

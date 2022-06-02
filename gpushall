@@ -20,3 +20,5 @@ cd ../zosbd2goclient    && git push origin master && git push github master && g
 echo "-- compressblockdevice"
 cd ../compressblockdevice    && git push origin master && git push github master && git push --tags # && go get -u ./...  && go mod tidy
 
+echo "-- slookup_i"
+cd ../slookup_i  && git push origin master && git push github master && git push --tags # && go get -u ./...  && go mod tidy

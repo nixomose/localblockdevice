@@ -7,3 +7,4 @@ cd ../blockdevicelib && git pull origin master
 cd ../stree_v && git pull origin master
 cd ../zosbd2goclient && git pull origin master
 cd ../compressblockdevice && git pull origin master
+cd ../slookup_i && git pull origin master

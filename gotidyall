@@ -20,3 +20,6 @@ cd ../compressblockdevice    &&  go mod tidy
 echo "-- localblockdevice"
 cd ../localblockdevice       &&  go mod tidy 
 
+echo "-- slookup_i"
+cd ../slookup_i       &&  go mod tidy 
+

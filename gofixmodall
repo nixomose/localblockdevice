@@ -20,3 +20,6 @@ cd ../compressblockdevice    && rm -f go.sum &&  go get  -u ./...  && go mod tid
 echo "-- localblockdevice"
 cd ../localblockdevice  && rm -f go.sum &&  go get  -u ./...  && go mod tidy 
 
+echo "-- slookup_i"
+cd ../slookup_i  && rm -f go.sum &&  go get  -u ./...  && go mod tidy 
+

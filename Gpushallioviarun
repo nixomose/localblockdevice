@@ -5,3 +5,4 @@ cd ../nixomosegotools && git push io master
 cd ../remoteblockdevice && git push io master
 cd ../stree_v && git push io master
 cd ../zosbd2goclient && git push io master
+cd ../slookup_i && git push io master
