@@ -1,4 +1,16 @@
 
+6/12/2022
+another thing I keep forgetting to write down...
+once you get the slookup thing working
+fill in some more features into the catalog.
+as in, when you define a catalog instead of picking a file, you 
+can define a list of stuff...
+stripe 1: host:port/identifier/file/blockdevice blocks 0-100
+stripe 2: localhost:port/identificer/file/blockdevice blocks 100-150
+and so on
+and you can also do mirroring...
+
+
 
 4/3/2022
 I know I wrote this down somewhere else, but make go routines out of 
