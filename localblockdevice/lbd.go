@@ -5,6 +5,7 @@ package main
 
 import (
 	"container/list"
+	"os"
 
 	blockdevicelib "github.com/nixomose/blockdevicelib/blockdevicelib"
 	"github.com/nixomose/nixomosegotools/tools"
@@ -28,13 +29,18 @@ func main() {
 	var l *blockdevicelib.Lbd_lib
 	ret, l = blockdevicelib.New_blockdevicelib(TXT_APPLICATION_NAME)
 	if ret != nil {
+		os.Exit(1)
 		return
 	}
 	var root_cmd *cobra.Command
 	ret, root_cmd = l.Startup(TXT_DEFAULT_CONFIG_FILE, TXT_DEFAULT_LOG_FILE,
 		TXT_DEFAULT_CATALOG_FILE) // start configuring and make log and stuff.
 	if ret != nil {
+		os.Exit(1)
 		return
 	}
-	l.Run(root_cmd, &list.List{})
+	if ret = l.Run(root_cmd, &list.List{}); ret != nil {
+		os.Exit(1)
+		return
+	}
 }
