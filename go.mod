@@ -13,17 +13,17 @@ module github.com/nixomose/localblockdevice
 go 1.18
 
 require (
-	github.com/nixomose/blockdevicelib v0.0.0-20220531232442-adf0ae7d7fb8
+	github.com/nixomose/blockdevicelib v0.0.0-20220810000413-d9036b705e57
 	github.com/nixomose/nixomosegotools v0.0.0-20220601021307-4fef638de118
-	github.com/spf13/cobra v1.4.0
+	github.com/spf13/cobra v1.5.0
 )
 
 require (
 	github.com/BurntSushi/toml v1.1.0 // indirect
-	github.com/inconshreveable/mousetrap v1.0.0 // indirect
+	github.com/inconshreveable/mousetrap v1.0.1 // indirect
 	github.com/ncw/directio v1.0.5 // indirect
-	github.com/nixomose/stree_v v0.0.0-20220609015355-6910180c06ab // indirect
-	github.com/nixomose/zosbd2goclient v0.0.0-20220601013206-758ca3d1fa3d // indirect
+	github.com/nixomose/stree_v v0.0.0-20220601010258-cf6c88e1694e // indirect
+	github.com/nixomose/zosbd2goclient v0.0.0-20220531234136-1d6059846b15 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
-	golang.org/x/sys v0.0.0-20220520151302-bc2c85ada10a // indirect
+	golang.org/x/sys v0.0.0-20220928140112-f11e5e49a4ec // indirect
 )
