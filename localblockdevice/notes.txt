@@ -1,4 +1,45 @@
 
+
+
+11/4/2022
+while trying to debug, if you get 
+
+Version of Delve is too old for Go version 1.19.3 (maximum supported version 1.18, suppress this error with --check-go-version=false)
+
+do this as nixo and as root
+
+go install github.com/go-delve/delve/cmd/dlv@latest
+
+that will update /home/nixo/go/bin/dlv
+
+
+11/4/2022
+if you get this while trying to debug...
+
+exec: "go": executable file not found in $PATH
+Process exiting with code: 1
+
+it's actually the output of the 
+/home/nixo/git/go/nixomose/zosbd2goclient/.vscode/dlv-sudo.sh
+script, the last line being:
+exec /usr/bin/sudo /home/nixo/go/bin/dlv --only-same-user=false debug --headless=true --listen=127.0.0.1:34192 --api-version=2
+
+which yields the go executable file not found in path error.
+
+and THAT is because the dlv file in /etc/sudoers.d is missing...
+which should contain this:
+
+nixo ALL=(root)NOPASSWD:/home/nixo/go/bin/dlv
+nixo ALL=(root)NOPASSWD:/home/nixo/go/bin/dlv-dap
+nixo ALL=(root)NOPASSWD:/usr/local/go/bin/dlv
+nixo ALL=(root)NOPASSWD:/usr/local/go/bin/dlv-dap
+
+okay so that wasn't it.
+it was because when we run /usr/bin/sudo in the dlv-sudo.sh script there is no more
+/usr/local/go/bin on the path, so I manually added it to the dlv-sudo.sh script
+that seems to have helped.
+
+
 6/12/2022
 another thing I keep forgetting to write down...
 once you get the slookup thing working
