@@ -21,4 +21,6 @@ echo "-- compressblockdevice"
 cd ../compressblockdevice    && git push origin master && git push github master && git push --tags # && go get -u ./...  && go mod tidy
 
 echo "-- slookup_i"
-cd ../slookup_i  && git push origin master && git push github master && git push --tags # && go get -u ./...  && go mod tidy
+#cd ../slookup_i  && git push origin master && git push github master && git push --tags # && go get -u ./...  && go mod tidy
+# 12/2/2022 herm....
+cd ../slookup_i  && git push origin master &&                           git push --tags # && go get -u ./...  && go mod tidy
